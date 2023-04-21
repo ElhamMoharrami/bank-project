@@ -15,6 +15,6 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return time + "," + amount + "," + accAId + "," + accBId + "," + type + "\n";
+        return time + "," + amount + "," + accAId + "," + accBId + "," + type ;
     }
 }
