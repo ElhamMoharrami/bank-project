@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TransactionGenerator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TransactionGenerator_jar</output-path>
+    <root id="archive" name="TransactionGenerator.jar">
+      <element id="module-output" name="TransactionGenerator" />
+    </root>
+  </artifact>
+</component>
