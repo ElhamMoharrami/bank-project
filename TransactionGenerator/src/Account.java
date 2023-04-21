@@ -1,13 +1,13 @@
 public class Account {
-    private final String accountId;
+    private final int accountId;
     private final String customerId;
 
-    public Account(String accountId, String customerId) {
+    public Account(int accountId, String customerId) {
         this.accountId = accountId;
         this.customerId = customerId;
     }
 
-    public String getAccountId() {
+    public int getAccountId() {
         return accountId;
     }
 

@@ -10,7 +10,7 @@ public class TransactionGenerator {
     public static List<Transaction> generateTransaction(List<Account> accounts) {
         List<Transaction> transactionList = new ArrayList<>();
         Random random = new Random();
-        List<String> accountIds = AccountGenerator.getAccIds();
+        List<Integer> accountIds = AccountGenerator.getAccIds();
         int count_transactions = random.nextInt(20 + 100) + 100;
         for (Account account : accounts) {
             for (int i = 0; i < count_transactions; i++) {
@@ -19,9 +19,9 @@ public class TransactionGenerator {
                 long date = ThreadLocalRandom.current().nextLong(startEpochDay, endEpochDay);
 //                    LocalDate date = LocalDate.ofEpochDay(randomDay);
                 double amount = Double.parseDouble(getRandomValue());
-                String acc_b = accountIds.get((int) (Math.random() * accountIds.size()));
+                int acc_b = accountIds.get((int) (Math.random() * accountIds.size()));
                 String type = TransactType.randomType().toString();
-                if (acc_b.equals(account.getAccountId())) {
+                if (acc_b == account.getAccountId()) {
                     Transaction transactionF = new Transaction(date, amount, account.getAccountId(), acc_b, "Failed");
                     transactionList.add(transactionF);
                 } else {
