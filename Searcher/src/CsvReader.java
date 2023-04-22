@@ -17,7 +17,7 @@ public class CsvReader {
                 list.add(currentLine);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("something went wrong,could not read the file");
         }
         return list;
     }
