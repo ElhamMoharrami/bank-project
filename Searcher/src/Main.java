@@ -6,8 +6,12 @@ public class Main {
     public static void main(String[] args) {
         String files = args[0];
         boolean quitFlag = false;
+        CsvReader reader = new CsvReader();
+        List<String> customers = reader.readFile(files + "/customers.csv");
+        List<String> ids = new ArrayList<>();
+        List<String> accountList = new ArrayList<>();
 
-        while (!quitFlag) {
+        while (!quitFlag && reader.isValidDirectory()) {
             System.out.println("Please Enter A Name or enter q to quit:" + "\n");
             Scanner input = new Scanner(System.in);
             String name = input.nextLine();
@@ -15,10 +19,6 @@ public class Main {
                 quitFlag = true;
             }
             boolean nameExists = false;
-
-            List<String> customers = CsvReader.readFile(files + "/customers.csv");
-            List<String> ids = new ArrayList<>();
-            List<String> accountList = new ArrayList<>();
 
             for (int i = 0; i < customers.size(); i++) {
                 String[] user = customers.get(i).split(",");
@@ -28,7 +28,7 @@ public class Main {
                 }
             }
             if (nameExists) {
-                List<String> accounts = CsvReader.readFile(files + "/accounts.csv");
+                List<String> accounts = reader.readFile(files + "/accounts.csv");
                 for (int i = 0; i < accounts.size(); i++) {
                     String[] account = accounts.get(i).split(",");
                     for (int j = 0; j < ids.size(); j++) {
@@ -37,7 +37,7 @@ public class Main {
                         }
                     }
                 }
-                List<String> transactions = CsvReader.readFile(files + "/transaction.csv");
+                List<String> transactions = reader.readFile(files + "/transaction.csv");
                 for (int i = 0; i < transactions.size(); i++) {
                     String[] transaction = transactions.get(i).split(",");
                     for (int j = 0; j < accountList.size(); j++) {
@@ -46,10 +46,9 @@ public class Main {
                         }
                     }
                 }
-            } else {
+            } else if(!name.equals("q")) {
                 System.out.println("Entered name does not exist or is invalid");
             }
         }
     }
-}
 }
