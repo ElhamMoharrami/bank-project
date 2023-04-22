@@ -16,9 +16,10 @@ public class CsvWriter<T> {
         this.list = list;
     }
 
-    public void writeToFile() {
-        Path filePath = FileSystems.getDefault().getPath(fileLocation,fileName);
+    public void writeToFile(String header) {
+        Path filePath = FileSystems.getDefault().getPath(fileLocation, fileName);
         try (BufferedWriter bufferedList = Files.newBufferedWriter(filePath)) {
+            bufferedList.write(header);
             for (T element : list) {
                 bufferedList.write(element.toString() + "\n");
             }
