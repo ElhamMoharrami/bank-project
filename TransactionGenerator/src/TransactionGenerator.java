@@ -1,5 +1,7 @@
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Month;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,10 +16,9 @@ public class TransactionGenerator {
         int count_transactions = random.nextInt(20 + 100) + 100;
         for (Account account : accounts) {
             for (int i = 0; i < count_transactions; i++) {
-                long startEpochDay = LocalDate.of(2005, Month.JANUARY, 1).toEpochDay();
-                long endEpochDay = LocalDate.now().toEpochDay();
-                long date = ThreadLocalRandom.current().nextLong(startEpochDay, endEpochDay);
-//                    LocalDate date = LocalDate.ofEpochDay(randomDay);
+                LocalTime time = LocalTime.parse("20:12:32");
+                ZoneOffset zone = ZoneOffset.of("Z");
+                long date = LocalDate.of(2005, Month.JANUARY, 1).toEpochSecond(time, zone);
                 double amount = Double.parseDouble(getRandomValue());
                 int acc_b = accountIds.get((int) (Math.random() * accountIds.size()));
                 String type = TransactType.randomType().toString();
