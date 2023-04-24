@@ -1,3 +1,5 @@
+package com.elham.gholak;
+
 public class Customer {
     private final String customerId;
     private final String name;

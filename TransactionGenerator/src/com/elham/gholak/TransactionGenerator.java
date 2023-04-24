@@ -1,3 +1,9 @@
+package com.elham.gholak;
+
+import com.elham.gholak.Account;
+import com.elham.gholak.AccountGenerator;
+import com.elham.gholak.Transaction;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
@@ -5,7 +11,6 @@ import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class TransactionGenerator {
 

@@ -1,3 +1,5 @@
+package com.elham.gholak;
+
 import java.util.Random;
 
 enum TransactType {
