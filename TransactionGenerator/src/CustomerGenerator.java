@@ -5,8 +5,8 @@ public class CustomerGenerator {
     private static final List<String> lName = Arrays.asList("Santos", "Dragna", "Duarte", "Green", "Blake", "Roans");
     private static final List<Customer> customers = new ArrayList<>();
 
-    public static void generateCustomers(int accountCount) {
-        for (int i = 1; i <= accountCount; i++) {
+    public static void generateCustomers(int customerCount) {
+        for (int i = 1; i <= customerCount; i++) {
             String customerId = String.valueOf(i);
             Random random = new Random();
             String name = fName.get(random.nextInt(fName.size())) + " " + lName.get(random.nextInt(lName.size()));

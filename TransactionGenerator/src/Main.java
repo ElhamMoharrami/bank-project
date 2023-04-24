@@ -1,10 +1,14 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        ConfigLoader loadConfig = new ConfigLoader();
+        loadConfig.loadConfig("customergenerator.customerCount");
+        String customerCount = loadConfig.getProperty();
         try {
             String fileLoc = args[0];
-            CustomerGenerator.generateCustomers(20);
+            CustomerGenerator.generateCustomers(Integer.parseInt(customerCount));
             List<Customer> customerList = CustomerGenerator.getCustomers();
             AccountGenerator.generateAccount(customerList);
             List<Account> accountList = AccountGenerator.getAccounts();

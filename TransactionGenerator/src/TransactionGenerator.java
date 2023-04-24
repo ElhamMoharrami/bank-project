@@ -12,7 +12,12 @@ public class TransactionGenerator {
         List<Transaction> transactionList = new ArrayList<>();
         Random random = new Random();
         List<Integer> accountIds = AccountGenerator.getAccIds();
-        int count_transactions = random.nextInt(20 + 100) + 100;
+        ConfigLoader loadConfig = new ConfigLoader();
+        loadConfig.loadConfig("transactiongenerator.transaction.min");
+        int transactionMinBound = Integer.parseInt(loadConfig.getProperty());
+        loadConfig.loadConfig("transactiongenerator.transaction.max");
+        int transactionMaxBound = Integer.parseInt(loadConfig.getProperty());
+        int count_transactions = random.nextInt(transactionMinBound + transactionMaxBound) + transactionMaxBound;
         for (Account account : accounts) {
             for (int i = 0; i < count_transactions; i++) {
                 LocalTime time = LocalTime.parse("20:12:32");
