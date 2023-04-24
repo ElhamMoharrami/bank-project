@@ -1,7 +1,3 @@
-package com.elham.search;
-
-import com.elham.search.CsvReader;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

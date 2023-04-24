@@ -1,5 +1,3 @@
-package com.elham.gholak;
-
 public class Account {
     private final int accountId;
     private final String customerId;

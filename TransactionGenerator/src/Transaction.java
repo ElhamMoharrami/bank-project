@@ -1,5 +1,3 @@
-package com.elham.gholak;
-
 public class Transaction {
     private final long time;
     private final double amount;

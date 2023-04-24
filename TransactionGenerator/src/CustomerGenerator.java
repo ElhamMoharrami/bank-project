@@ -1,7 +1,3 @@
-package com.elham.gholak;
-
-import com.elham.gholak.Customer;
-
 import java.util.*;
 
 public class CustomerGenerator {
