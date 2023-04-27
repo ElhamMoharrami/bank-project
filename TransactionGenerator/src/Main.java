@@ -1,13 +1,13 @@
-import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        ConfigLoader loadConfig = new ConfigLoader();
-        loadConfig.loadConfig("customergenerator.customerCount");
-        String customerCount = loadConfig.getProperty();
+    public static void main(String[] args) {
         try {
             String fileLoc = args[0];
+            ConfigLoader loadConfig = new ConfigLoader();
+            loadConfig.setConfigLoc(args[1]);
+            loadConfig.loadConfig("customergenerator.customerCount");
+            String customerCount = loadConfig.getProperty();
             CustomerGenerator.generateCustomers(Integer.parseInt(customerCount));
             List<Customer> customerList = CustomerGenerator.getCustomers();
             AccountGenerator.generateAccount(customerList);
@@ -19,8 +19,11 @@ public class Main {
             CsvWriter<Transaction> transactionWriter = new CsvWriter<>("transaction.csv", fileLoc, TransactionGenerator.generateTransaction(accountList));
             transactionWriter.writeToFile("epochTime,amount,sourceAcc,destinationAcc,type" + "\n");
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("No directory Entered. Please Enter a Directory.");
+            System.out.println("No directory Entered. Please Enter a Directory and the path to config file.");
+        } catch (NumberFormatException e) {
+            System.out.println("couldn't get value from config file");
         }
     }
 }
+
 

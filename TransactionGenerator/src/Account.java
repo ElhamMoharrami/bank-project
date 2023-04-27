@@ -12,8 +12,5 @@ public class Account {
     }
 
     @Override
-    public String toString() {
-        return
-                customerId+ ","+accountId;
-    }
+    public String toString() {return customerId+ ","+accountId; }
 }
