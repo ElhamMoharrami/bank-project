@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Searcher/Searcher.iml" filepath="$PROJECT_DIR$/Searcher/Searcher.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TransactionGenerator/TransactionGenerator.iml" filepath="$PROJECT_DIR$/TransactionGenerator/TransactionGenerator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/java-practice.iml" filepath="$PROJECT_DIR$/.idea/java-practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bank-project.iml" filepath="$PROJECT_DIR$/bank-project.iml" />
     </modules>
   </component>
 </project>
