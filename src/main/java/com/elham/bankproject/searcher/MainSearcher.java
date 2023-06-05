@@ -13,7 +13,6 @@ public class MainSearcher {
     public static void main(String[] args) {
         try {
             ConfigLoader loadConfig = new ConfigLoader();
-            loadConfig.setConfigLoc(args[0]);
             logger.info("Please choose method of searching:\n 1.search by files\n 2.search by database");
             Scanner input = new Scanner(System.in);
             String method = input.nextLine();

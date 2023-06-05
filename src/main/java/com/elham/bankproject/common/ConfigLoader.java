@@ -3,6 +3,7 @@ package com.elham.bankproject.common;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -17,8 +18,7 @@ public class ConfigLoader {
 
     public String loadConfig(String property) {
         try {
-            Path configFilePath = Paths.get(configLoc + "/config.properties");
-            FileInputStream propsInput = new FileInputStream(String.valueOf(configFilePath));
+            InputStream propsInput = getClass().getResourceAsStream("/config.properties");
             Properties prop = new Properties();
             prop.load(propsInput);
             this.property = prop.getProperty(property);
@@ -29,10 +29,6 @@ public class ConfigLoader {
         }
         return this.property;
     }
-
-//    public String getProperty() {
-//        return property;
-//    }
 
     public void setConfigLoc(String configLoc) {
         ConfigLoader.configLoc = configLoc;

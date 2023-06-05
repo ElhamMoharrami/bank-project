@@ -15,26 +15,23 @@ public class MainLoader {
         try {
             long startTimeMillis = System.currentTimeMillis();
             ConfigLoader loadConfig = new ConfigLoader();
-            loadConfig.setConfigLoc(args[0]);
             String fileLoc = loadConfig.loadConfig("files.destination");
-            TableCreator createTable = new TableCreator();
-            createTable.createTable();
-
+            CustomerTableCreator createCustomerTable = new CustomerTableCreator();
+            createCustomerTable.createTable();
+            AccountsTableCreator createAccountTable = new AccountsTableCreator();
+            createAccountTable.createTable();
+            TransactionTableCreator createTransactionTable = new TransactionTableCreator();
+            createTransactionTable.createTable();
             CsvReader csvReader = new CsvReader();
-            TableInsertor tableInsertor = new TableInsertor();
-
             List<String> customersList = csvReader.readFile(fileLoc + "/customers.csv");
-            String[] customerColumns = {"customer_id", "customer_name", "post_address"};
-            tableInsertor.insert(customersList, "customers", customerColumns);
-
+            CustomerLoader loadCustomers = new CustomerLoader();
+            loadCustomers.load(customersList);
             List<String> accountsList = csvReader.readFile(fileLoc + "/accounts.csv");
-            String[] accountcolumns = {"customer_id", "account_id"};
-            tableInsertor.insert(accountsList, "accounts", accountcolumns);
-
+            AccountLoader loadAccounts = new AccountLoader();
+            loadAccounts.load(accountsList);
             List<String> transactionList = csvReader.readFile(fileLoc + "/transaction.csv");
-            String[] transactionscolumns = {"transaction_id", "transaction_time", "amount", "src_acc ", "dest_acc", "transaction_type"};
-            tableInsertor.insert(transactionList, "transactions", transactionscolumns);
-
+            TransactionLoader loadTransactions = new TransactionLoader();
+            loadTransactions.load(transactionList);
             long endTimeMillis = System.currentTimeMillis();
             long timeToLoad = endTimeMillis - startTimeMillis;
             logger.info("loading files to database took " + timeToLoad);

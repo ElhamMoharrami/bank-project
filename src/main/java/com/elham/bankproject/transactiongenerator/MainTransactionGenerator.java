@@ -16,7 +16,6 @@ public class MainTransactionGenerator {
     public static void main(String[] args) {
         try {
             ConfigLoader loadConfig = new ConfigLoader();
-            loadConfig.setConfigLoc(args[0]);
             int customerCount = Integer.parseInt(loadConfig.loadConfig("customergenerator.customerCount"));
             CustomerGenerator customerGenerator = new CustomerGenerator(customerCount);
             List<Customer> customerList = customerGenerator.generateCustomers();
