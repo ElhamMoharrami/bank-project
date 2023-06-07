@@ -20,14 +20,15 @@ public class TransactionGenerator {
         this.transactionMaxBound = transactionMaxBound;
     }
 
-    public List<Transaction> generateTransaction() {
+    public List<List<Transaction>> generateTransaction() {
+        List<List<Transaction>> transactionsListsList=new ArrayList<>();
         List<Transaction> transactionList = new ArrayList<>();
         Random random = new Random();
         List<Integer> accountIds = AccountGenerator.getAccIds();
-        int count_transactions = random.nextInt(transactionMinBound + transactionMaxBound) + transactionMaxBound;
+        int countTransactions = random.nextInt(transactionMinBound + transactionMaxBound) + transactionMaxBound;
         int transactionId = 0;
         for (Account account : accounts) {
-            for (int i = 0; i < count_transactions; i++) {
+            for (int i = 0; i < countTransactions; i++) {
                 long now = System.currentTimeMillis();
                 long timeSinceTransaction = random.nextInt(14 * 24 * 60 * 60 * 1000);
                 long date = now - timeSinceTransaction;
@@ -38,14 +39,19 @@ public class TransactionGenerator {
                     Transaction transactionF = new Transaction(Integer.toString(transactionId), date, amount, account.getAccountId(), accB, "Failed");
                     transactionList.add(transactionF);
                 } else {
-                    Transaction transactionA = new Transaction(Integer.toString(transactionId+=1), date, amount, account.getAccountId(), accB, type);
+                    Transaction transactionA = new Transaction(Integer.toString(transactionId += 1), date, amount, account.getAccountId(), accB, type);
                     transactionList.add(transactionA);
-                    Transaction transactionB = new Transaction(Integer.toString(transactionId+=2), date, amount, accB, account.getAccountId(), type.equals("CREDIT") ? "DEBIT" : "CREDIT");
+                    Transaction transactionB = new Transaction(Integer.toString(transactionId += 2), date, amount, accB, account.getAccountId(), type.equals("CREDIT") ? "DEBIT" : "CREDIT");
                     transactionList.add(transactionB);
+                }
+                if (transactionList.size() >= 1000) {
+                    List<Transaction> transactions = new ArrayList<>(transactionList);
+                    transactionsListsList.add(transactions);
+                    transactionList.clear();
                 }
             }
         }
-        return transactionList;
+        return transactionsListsList;
     }
 
     public static String getRandomValue() {

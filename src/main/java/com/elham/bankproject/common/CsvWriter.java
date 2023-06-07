@@ -25,8 +25,8 @@ public class CsvWriter<T> {
         Path filePath = FileSystems.getDefault().getPath(fileLocation, fileName);
         try (BufferedWriter bufferedList = Files.newBufferedWriter(filePath)) {
             BasicFileAttributes attributes = Files.readAttributes(filePath, BasicFileAttributes.class);
-            long creationTime = attributes.creationTime().toMillis();
             long currentTime = System.currentTimeMillis();
+            long creationTime = attributes.creationTime().toMillis();
             long duration = currentTime - creationTime;
             bufferedList.write(header+"\n");
             for (T element : list) {

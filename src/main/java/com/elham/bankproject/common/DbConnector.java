@@ -23,7 +23,6 @@ public class DbConnector {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-            System.out.println(connection);
             if (connection != null) {
                 logger.info("Connection Ok");
             } else {

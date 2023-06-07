@@ -36,12 +36,12 @@
                 <version>3.0.0</version>
                 <configuration>
                     <classpathScope>compile</classpathScope>
-                    <mainClass>com.elham.bankproject.transactiongenerator.MainTransactionGenerator</mainClass>
+                    <mainClass>com.elham.bankproject.transactiongenerator.DataGenerator</mainClass>
                     <executable>java</executable>
                     <arguments>
                         <argument>-classpath</argument>
                         <argument>${project.build.testOutputDirectory};${project.build.outputDirectory}</argument>
-                        <argument>com.elham.bankproject.transactiongenerator.MainTransactionGenerator</argument>
+                        <argument>com.elham.bankproject.transactiongenerator.DataGenerator</argument>
                         <argument>arg1</argument>
                     </arguments>
                 </configuration>

@@ -1,11 +1,8 @@
 package com.elham.bankproject.common;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
@@ -13,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 
 public class ConfigLoader {
     private String property;
-    private static String configLoc;
     private static final Logger logger = LogManager.getLogger(ConfigLoader.class);
 
     public String loadConfig(String property) {
@@ -28,10 +24,6 @@ public class ConfigLoader {
             logger.error("something went wrong");
         }
         return this.property;
-    }
-
-    public void setConfigLoc(String configLoc) {
-        ConfigLoader.configLoc = configLoc;
     }
 }
 
