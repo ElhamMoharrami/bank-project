@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d2f6fb7-75a6-4668-8592-4a319b10e892" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/common/ConfigLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/common/ConfigLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/common/CsvWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/common/CsvWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/common/DbConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/common/DbConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/searcher/CliSearcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/searcher/CliSearcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/MainTransactionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/DataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/TransactionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/TransactionGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/MainLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/MainLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/elham/bankproject/loader/MainLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/elham/bankproject/loader/MainLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/elham/bankproject/transactiongenerator/DataGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/elham/bankproject/transactiongenerator/DataGenerator.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,21 +35,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/elham/bank-project&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/elham/bank-project"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.tr">
+  <component name="RunManager" selected="Application.load">
+    <configuration name="load" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.elham.bankproject.loader.MainLoader" />
+      <module name="java-practice" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="se" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.elham.bankproject.searcher.MainSearcher" />
       <module name="bank-project" />
@@ -84,8 +90,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.tr" />
       <item itemvalue="Application.se" />
+      <item itemvalue="Application.tr" />
+      <item itemvalue="Application.load" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -115,22 +122,12 @@
       <workItem from="1685974455238" duration="961000" />
       <workItem from="1686117589113" duration="522000" />
       <workItem from="1686118118991" duration="2640000" />
-      <workItem from="1686122398623" duration="2556000" />
+      <workItem from="1686122398623" duration="3777000" />
+      <workItem from="1686226411373" duration="1284000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/TransactionGenerator.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
