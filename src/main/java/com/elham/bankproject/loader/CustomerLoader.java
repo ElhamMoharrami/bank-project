@@ -18,8 +18,8 @@ public class CustomerLoader implements Loader {
             connection.setAutoCommit(false);
             for (String l : list) {
                 String[] value = l.split(",");
-                Customer customer = new Customer(value[0], value[1], value[2]);
-                preparedStatement.setString(1, customer.getCustomerId());
+                Customer customer = new Customer(Long.parseLong(value[0]), value[1], value[2]);
+                preparedStatement.setLong(1, customer.getCustomerId());
                 preparedStatement.setString(2, customer.getName());
                 preparedStatement.setString(3, customer.getAddress());
                 preparedStatement.execute();

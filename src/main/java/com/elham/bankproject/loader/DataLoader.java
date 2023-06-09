@@ -8,8 +8,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-public class MainLoader {
-    private static final Logger logger = LogManager.getLogger(MainLoader.class);
+public class DataLoader {
+    private static final Logger logger = LogManager.getLogger(DataLoader.class);
 
     public static void main(String[] args) {
         try {

@@ -16,7 +16,7 @@ public class CustomerGenerator {
     public List<Customer> generateCustomers() {
         List<Customer> customers = new ArrayList<>();
         for (int i = 1; i <= customerCount; i++) {
-            String customerId = String.valueOf(i);
+            long customerId = Long.parseLong(String.valueOf(i));
             Random random = new Random();
             String name = fName.get(random.nextInt(fName.size())) + " " + lName.get(random.nextInt(lName.size()));
             long address = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;

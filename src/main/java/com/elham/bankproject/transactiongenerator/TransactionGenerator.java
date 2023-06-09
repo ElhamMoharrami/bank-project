@@ -1,10 +1,8 @@
 package com.elham.bankproject.transactiongenerator;
 
-import com.elham.bankproject.common.ConfigLoader;
 import com.elham.bankproject.model.Account;
 import com.elham.bankproject.model.Transaction;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,27 +19,27 @@ public class TransactionGenerator {
     }
 
     public List<List<Transaction>> generateTransaction() {
-        List<List<Transaction>> transactionsListsList=new ArrayList<>();
+        List<List<Transaction>> transactionsListsList = new ArrayList<>();
         List<Transaction> transactionList = new ArrayList<>();
         Random random = new Random();
         List<Integer> accountIds = AccountGenerator.getAccIds();
         int countTransactions = random.nextInt(transactionMinBound + transactionMaxBound) + transactionMaxBound;
-        int transactionId = 0;
+        long transactionId = 0;
         for (Account account : accounts) {
             for (int i = 0; i < countTransactions; i++) {
                 long now = System.currentTimeMillis();
                 long timeSinceTransaction = random.nextInt(14 * 24 * 60 * 60 * 1000);
                 long date = now - timeSinceTransaction;
                 double amount = Double.parseDouble(getRandomValue());
-                String accB = Integer.toString(accountIds.get((int) (Math.random() * accountIds.size())));
+                long accB = accountIds.get((int) (Math.random() * accountIds.size()));
                 String type = TransactType.randomType().toString();
-                if (accB.equals(account.getAccountId())) {
-                    Transaction transactionF = new Transaction(Integer.toString(transactionId), date, amount, account.getAccountId(), accB, "Failed");
+                if (accB == account.getAccountId()) {
+                    Transaction transactionF = new Transaction(transactionId, date, amount, account.getAccountId(), accB, "Failed");
                     transactionList.add(transactionF);
                 } else {
-                    Transaction transactionA = new Transaction(Integer.toString(transactionId += 1), date, amount, account.getAccountId(), accB, type);
+                    Transaction transactionA = new Transaction(transactionId += 1, date, amount, account.getAccountId(), accB, type);
                     transactionList.add(transactionA);
-                    Transaction transactionB = new Transaction(Integer.toString(transactionId += 2), date, amount, accB, account.getAccountId(), type.equals("CREDIT") ? "DEBIT" : "CREDIT");
+                    Transaction transactionB = new Transaction(transactionId += 2, date, amount, accB, account.getAccountId(), type.equals("CREDIT") ? "DEBIT" : "CREDIT");
                     transactionList.add(transactionB);
                 }
                 if (transactionList.size() >= 1000) {

@@ -15,7 +15,7 @@ public class CustomerTableCreator implements TableCreator {
         DbConnector createConnection = new DbConnector();
         try (Connection connection = createConnection.getConnection()) {
             Statement statement = connection.createStatement();
-            statement.execute("CREATE TABLE IF NOT EXISTS customers" + "(customer_id varchar(10) primary key ," +
+            statement.execute("CREATE TABLE IF NOT EXISTS customers" + "(customer_id bigint primary key ," +
                     "customer_name varchar(200) ,post_address varchar(10))");
         } catch (Exception e) {
             logger.error("issue at create customer table");

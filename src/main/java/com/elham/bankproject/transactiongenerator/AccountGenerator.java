@@ -27,7 +27,7 @@ public class AccountGenerator {
             int countAccounts = random.nextInt(accountMaxBound) + accountMinBound;
             for (int j = 1; j <= countAccounts; j++) {
                 accIds.add(accountId);
-                Account account = new Account(customer.getCustomerId(), Integer.toString(accountId));
+                Account account = new Account(customer.getCustomerId(),accountId);
                 accounts.add(account);
                 accountId += 1;
             }

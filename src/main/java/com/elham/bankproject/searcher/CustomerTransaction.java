@@ -1,17 +1,17 @@
 package com.elham.bankproject.searcher;
 
 public class CustomerTransaction {
-    private final String customer_name;
-    private final String customerId;
-    private final String transactionTime;
+    private final String customerName;
+    private final Long customerId;
+    private final Long transactionTime;
     private final String amount;
-    private final String srcAcc;
-    private final String destAcc;
+    private final Long srcAcc;
+    private final Long destAcc;
     private final String transactionType;
 
-    public CustomerTransaction(String customer_name, String customerId, String transactionTime, String amount,
-                               String srcAcc, String destAcc, String transactionType) {
-        this.customer_name = customer_name;
+    public CustomerTransaction(String customerName, Long customerId, Long transactionTime, String amount,
+                               Long srcAcc, Long destAcc, String transactionType) {
+        this.customerName = customerName.toLowerCase();
         this.customerId = customerId;
         this.transactionTime = transactionTime;
         this.amount = amount;
@@ -22,7 +22,7 @@ public class CustomerTransaction {
 
     @Override
     public String toString() {
-        return customer_name + "," + customerId + "," + transactionTime + "," + amount + ", " + srcAcc + "," +
+        return customerName + "," + customerId + "," + transactionTime + "," + amount + ", " + srcAcc + "," +
                 destAcc + "," + transactionType;
     }
 }

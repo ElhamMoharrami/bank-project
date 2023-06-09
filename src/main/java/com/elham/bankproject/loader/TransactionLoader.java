@@ -18,14 +18,14 @@ public class TransactionLoader implements Loader {
             connection.setAutoCommit(false);
             for (String l : list) {
                 String[] value = l.split(",");
-                Transaction transaction = new Transaction(value[0], Long.parseLong(value[1]),
+                Transaction transaction = new Transaction(Long.parseLong(value[0]), Long.parseLong(value[1]),
                         Double.parseDouble(value[2]),
-                        value[3], value[4], value[5]);
-                preparedStatement.setString(1, transaction.getId());
+                        Long.parseLong(value[3]), Long.parseLong(value[4]), value[5]);
+                preparedStatement.setLong(1, transaction.getId());
                 preparedStatement.setLong(2, transaction.getTime());
                 preparedStatement.setDouble(3, transaction.getAmount());
-                preparedStatement.setString(4, transaction.getAccAId());
-                preparedStatement.setString(5, transaction.getAccBId());
+                preparedStatement.setLong(4, transaction.getAccAId());
+                preparedStatement.setLong(5, transaction.getAccBId());
                 preparedStatement.setString(6, transaction.getType());
                 preparedStatement.execute();
             }

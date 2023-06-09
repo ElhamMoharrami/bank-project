@@ -1,19 +1,19 @@
 package com.elham.bankproject.model;
 
 public class Account {
-    private final String accountId;
-    private final String customerId;
+    private final long accountId;
+    private final long customerId;
 
-    public Account(String customerId, String  accountId) {
+    public Account(long customerId, long accountId) {
         this.accountId = accountId;
         this.customerId = customerId;
     }
 
-    public  String getAccountId() {
+    public  Long getAccountId() {
         return accountId;
     }
 
-    public String getCustomerId() {
+    public Long getCustomerId() {
         return customerId;
     }
 

@@ -18,9 +18,9 @@ public class AccountLoader implements Loader {
             connection.setAutoCommit(false);
             for (String l : list) {
                 String[] value = l.split(",");
-                Account account = new Account(value[0], value[1]);
-                preparedStatement.setString(1, account.getCustomerId());
-                preparedStatement.setString(2, account.getAccountId());
+                Account account = new Account(Long.parseLong(value[0]), Long.parseLong(value[1]));
+                preparedStatement.setLong(1, account.getCustomerId());
+                preparedStatement.setLong(2, account.getAccountId());
                 preparedStatement.execute();
             }
             connection.commit();

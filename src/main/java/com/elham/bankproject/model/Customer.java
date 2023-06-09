@@ -1,17 +1,17 @@
 package com.elham.bankproject.model;
 
 public class Customer {
-    private final String customerId;
+    private final long customerId;
     private final String name;
     private final String address;
 
-    public Customer(String customerId, String name, String address) {
+    public Customer(long customerId, String name, String address) {
         this.customerId = customerId;
         this.name = name;
         this.address = address;
     }
 
-    public String getCustomerId() {
+    public long getCustomerId() {
         return customerId;
     }
 

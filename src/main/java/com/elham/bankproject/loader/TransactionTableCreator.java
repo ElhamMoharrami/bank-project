@@ -15,8 +15,8 @@ public class TransactionTableCreator implements TableCreator {
         DbConnector createConnection = new DbConnector();
         try (Connection connection = createConnection.getConnection()) {
             Statement statement = connection.createStatement();
-            statement.execute("CREATE TABLE IF NOT EXISTS transactions" + "(transaction_id varchar(10)," +
-                    "transaction_time varchar(600),amount numeric(5,2) ,src_acc varchar(10),dest_acc varchar(10)," +
+            statement.execute("CREATE TABLE IF NOT EXISTS transactions" + "(transaction_id bigint," +
+                    "transaction_time bigint,amount numeric(5,2) ,src_acc bigint,dest_acc bigint," +
                     "transaction_type varchar(7) )");
         } catch (Exception e) {
             logger.error("issue at create transaction table");
