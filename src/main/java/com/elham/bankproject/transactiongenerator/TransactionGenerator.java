@@ -34,12 +34,12 @@ public class TransactionGenerator {
                 long accB = accountIds.get((int) (Math.random() * accountIds.size()));
                 String type = TransactType.randomType().toString();
                 if (accB == account.getAccountId()) {
-                    Transaction transactionF = new Transaction(transactionId, date, amount, account.getAccountId(), accB, "Failed");
+                    Transaction transactionF = new Transaction(transactionId+=1, date, amount, account.getAccountId(), accB, "Failed");
                     transactionList.add(transactionF);
                 } else {
-                    Transaction transactionA = new Transaction(transactionId += 1, date, amount, account.getAccountId(), accB, type);
+                    Transaction transactionA = new Transaction(transactionId +=2 , date, amount, account.getAccountId(), accB, type);
                     transactionList.add(transactionA);
-                    Transaction transactionB = new Transaction(transactionId += 2, date, amount, accB, account.getAccountId(), type.equals("CREDIT") ? "DEBIT" : "CREDIT");
+                    Transaction transactionB = new Transaction(transactionId += 3, date, amount, accB, account.getAccountId(), type.equals("CREDIT") ? "DEBIT" : "CREDIT");
                     transactionList.add(transactionB);
                 }
                 if (transactionList.size() >= 1000) {
