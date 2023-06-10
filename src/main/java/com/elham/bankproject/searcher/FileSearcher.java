@@ -55,8 +55,10 @@ public class FileSearcher implements Searcher {
     public void createTransactionList(List<String> transactions) {
         for (int i = 0; i < transactions.size(); i++) {
             String[] transactionData = transactions.get(i).split(",");
-            Transaction transaction = new Transaction(Long.parseLong(transactionData[0]), Long.parseLong(transactionData[1]),
-                    Double.parseDouble(transactionData[2]), Long.parseLong(transactionData[3]), Long.parseLong(transactionData[4]), transactionData[5]);
+            Transaction transaction = new Transaction(Long.parseLong(transactionData[0]),
+                    Long.parseLong(transactionData[1]),
+                    Double.parseDouble(transactionData[2]), Long.parseLong(transactionData[3]),
+                    Long.parseLong(transactionData[4]), transactionData[5]);
             for (Map.Entry<Long, ArrayList<Long>> entry : existingCustomersData.entrySet()) {
                 ArrayList<Long> values = entry.getValue();
                 for (int j = 0; j < values.size(); j++) {

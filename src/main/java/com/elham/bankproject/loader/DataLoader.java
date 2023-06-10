@@ -46,7 +46,8 @@ public class DataLoader {
                     loadTransactions.load(transactionList);
                     long endTransactionLoadTimeMillis = System.currentTimeMillis();
                     long timeToLoadTransactions = endTransactionLoadTimeMillis - startTransactionLoadTimeMillis;
-                    logger.info("transaction file "+count+" loaded successfully. took "+timeToLoadTransactions+" milli seconds");
+                    logger.info("transaction file "+count+" loaded successfully. took "+timeToLoadTransactions+
+                            " milli seconds");
                     count++;
                 } else {
                     flag = false;

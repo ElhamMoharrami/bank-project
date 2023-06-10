@@ -34,18 +34,24 @@ public class DataGenerator {
             long endAccountGenerateTimeMillis = System.currentTimeMillis();
             long timeToGenerateAccounts = endAccountGenerateTimeMillis - startAccountGenerateTimeMillis;
             logger.info("accounts generated in " + fileLoc + " . took " + timeToGenerateAccounts + " milli seconds.");
-            int transactionMinBound = Integer.parseInt(loadConfig.loadConfig("transactiongenerator.transaction.min"));
-            int transactionMaxBound = Integer.parseInt(loadConfig.loadConfig("transactiongenerator.transaction.max"));
-            TransactionGenerator transactionGenerator = new TransactionGenerator(accountList, transactionMinBound, transactionMaxBound);
+            int transactionMinBound = Integer.parseInt(loadConfig.loadConfig
+                    ("transactiongenerator.transaction.min"));
+            int transactionMaxBound = Integer.parseInt(loadConfig.loadConfig
+                    ("transactiongenerator.transaction.max"));
+            TransactionGenerator transactionGenerator = new TransactionGenerator(accountList, transactionMinBound,
+                    transactionMaxBound);
             List<List<Transaction>> transactionsList = transactionGenerator.generateTransaction();
             int count = 0;
             for (List<Transaction> transactionList : transactionsList) {
                 long startTransactionGenerateTimeMillis = System.currentTimeMillis();
-                CsvWriter<Transaction> transactionWriter = new CsvWriter<>("transaction" + count + ".csv", fileLoc);
-                transactionWriter.writeToFile("TransactionId,EpochTime,Amount,SourceAcc,DestinationAcc,Type", transactionList);
+                CsvWriter<Transaction> transactionWriter = new CsvWriter<>("transaction" + count + ".csv",
+                        fileLoc);
+                transactionWriter.writeToFile("TransactionId,EpochTime,Amount,SourceAcc,DestinationAcc,Type",
+                        transactionList);
                 long endTransactionGenerateTimeMillis = System.currentTimeMillis();
                 long timeToGenerateTransaction = endTransactionGenerateTimeMillis - startTransactionGenerateTimeMillis;
-                logger.info("transaction file number " + count + " generated in " + fileLoc + " . took " + timeToGenerateTransaction + " milli seconds.");
+                logger.info("transaction file number " + count + " generated in " + fileLoc + " . took " +
+                        timeToGenerateTransaction + " milli seconds.");
                 count++;
             }
         } catch (ArrayIndexOutOfBoundsException e) {

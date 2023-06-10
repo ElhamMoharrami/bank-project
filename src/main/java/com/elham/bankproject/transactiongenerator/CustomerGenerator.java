@@ -5,8 +5,6 @@ import com.elham.bankproject.model.Customer;
 import java.util.*;
 
 public class CustomerGenerator {
-    private static final List<String> fName = Arrays.asList("Julian", "Dante", "Jacks", "Scarlet", "Tella", "Nicolas");
-    private static final List<String> lName = Arrays.asList("Santos", "Dragna", "Duarte", "Green", "Blake", "Roans");
     private final int customerCount;
 
     public CustomerGenerator(int customerCount) {
@@ -14,6 +12,8 @@ public class CustomerGenerator {
     }
 
     public List<Customer> generateCustomers() {
+        final List<String> fName = Arrays.asList("Julian", "Dante", "Jacks", "Scarlet", "Tella", "Nicolas");
+        final List<String> lName = Arrays.asList("Santos", "Dragna", "Duarte", "Green", "Blake", "Roans");
         List<Customer> customers = new ArrayList<>();
         for (int i = 1; i <= customerCount; i++) {
             long customerId = Long.parseLong(String.valueOf(i));

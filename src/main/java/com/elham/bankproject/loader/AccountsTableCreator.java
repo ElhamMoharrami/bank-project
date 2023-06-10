@@ -15,7 +15,8 @@ public class AccountsTableCreator implements TableCreator {
         DbConnector createConnection = new DbConnector();
         try (Connection connection = createConnection.getConnection()) {
             Statement statement = connection.createStatement();
-            statement.execute("CREATE TABLE IF NOT EXISTS accounts" + "(customer_id bigint,account_id bigint primary key )");
+            statement.execute("CREATE TABLE IF NOT EXISTS accounts" + "(customer_id bigint,account_id bigint" +
+                    " primary key )");
         } catch (Exception e) {
             logger.error("issue at create account table");
         }
