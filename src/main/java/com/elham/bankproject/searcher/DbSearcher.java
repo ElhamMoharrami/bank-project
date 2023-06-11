@@ -12,7 +12,6 @@ import java.util.List;
 
 public class DbSearcher implements Searcher {
     private final DbConnector createConnection = new DbConnector();
-    private List<CustomerTransaction> result;
     private static final Logger logger = LogManager.getLogger(DbSearcher.class);
     private final static String SEARCH_CUSTOMER_TRANSACTION_SQL = "SELECT customer_name,customers.customer_id," +
             "transaction_time," + "amount,src_acc,dest_acc,transaction_type \n" + "FROM customers INNER JOIN accounts " +
@@ -22,9 +21,10 @@ public class DbSearcher implements Searcher {
 
     @Override
     public List<CustomerTransaction> search(String keyword) {
+        List<CustomerTransaction> result = null;
         try (Connection connection = createConnection.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_CUSTOMER_TRANSACTION_SQL);
-            this.result = new ArrayList<>();
+            result = new ArrayList<>();
             preparedStatement.setString(1, keyword);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

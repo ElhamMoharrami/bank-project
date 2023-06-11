@@ -100,7 +100,7 @@ public class FileSearcher implements Searcher {
                         }
                     }
                 } else {
-                    logger.info("customer does not exist.");
+                    System.out.println("customer does not exist.");
                 }
             }
         } catch (Exception e) {

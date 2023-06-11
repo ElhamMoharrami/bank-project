@@ -47,7 +47,7 @@ public class CliSearcher {
                             + ".csv", filePath);
                     writer.writeToFile(HEADER, transactions);
                 } else {
-                    logger.warn("there is no transaction .customer doesnt exist.");
+                    System.out.println("there is no transaction .customer doesnt exist.");
                 }
             }
             counter++;
