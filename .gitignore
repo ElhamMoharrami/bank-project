@@ -1,9 +1,5 @@
+# IntelliJ IDEA files
+.idea/
+
 # Maven target directory
 target/
-
-# IDE files
-.idea/
-*.iml
-
-# Logs
-*.log
