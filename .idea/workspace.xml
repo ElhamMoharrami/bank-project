@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6d2f6fb7-75a6-4668-8592-4a319b10e892" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/AccountsTableCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/AccountsTableCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/DataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/searcher/CliSearcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/searcher/CliSearcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/searcher/DbSearcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/searcher/DbSearcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/searcher/FileSearcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/searcher/FileSearcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/searcher/MainSearcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/searcher/DataSearcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/CustomerGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/CustomerGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/DataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/TransactionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/transactiongenerator/TransactionGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +124,8 @@
       <workItem from="1686298914294" duration="4676000" />
       <workItem from="1686307840647" duration="4196000" />
       <workItem from="1686322855170" duration="1281000" />
-      <workItem from="1686407512359" duration="1150000" />
+      <workItem from="1686407512359" duration="1373000" />
+      <workItem from="1686472009774" duration="305000" />
     </task>
     <servers />
   </component>

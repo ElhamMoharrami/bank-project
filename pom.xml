@@ -31,19 +31,19 @@
             </plugin>
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.0.0</version>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                  <execution>
+                      <phase>package</phase>
+                      <goals>
+                          <goal>single</goal>
+                      </goals>
+                  </execution>
+                </executions>
                 <configuration>
-                    <classpathScope>compile</classpathScope>
-                    <mainClass>com.elham.bankproject.transactiongenerator.DataGenerator</mainClass>
-                    <executable>java</executable>
-                    <arguments>
-                        <argument>-classpath</argument>
-                        <argument>${project.build.testOutputDirectory};${project.build.outputDirectory}</argument>
-                        <argument>com.elham.bankproject.transactiongenerator.DataGenerator</argument>
-                        <argument>arg1</argument>
-                    </arguments>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
             </plugin>
 
