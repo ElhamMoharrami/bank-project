@@ -11,7 +11,6 @@ public class DataSearcher {
     private static final Logger logger = LogManager.getLogger(DataSearcher.class.getName());
 
     public static void main(String[] args) {
-        try {
             ConfigLoader loadConfig = new ConfigLoader();
             System.out.println("Please choose method of searching:\n 1.search by files\n 2.search by database");
             Scanner input = new Scanner(System.in);
@@ -23,10 +22,7 @@ public class DataSearcher {
                 CliSearcher cliSearcher = new CliSearcher(loadConfig, "2");
                 cliSearcher.startSearch();
             } else {
-                logger.warn("invalid entry!");
+                System.out.println("invalid entry!");
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            logger.warn("please enter a valid path to files directory");
-        }
     }
 }

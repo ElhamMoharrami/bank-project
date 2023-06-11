@@ -14,7 +14,6 @@ public class CliSearcher {
     private final String filePath;
     private final static String HEADER = "CustomerName,CustomerId,TransactionTime,Amount,SourceAcc,DestinationAcc," +
             "TransactionType";
-    private static final Logger logger = LogManager.getLogger(CliSearcher.class);
 
     public CliSearcher(ConfigLoader config, String type) {
         this.filePath = config.loadConfig("files.destination");

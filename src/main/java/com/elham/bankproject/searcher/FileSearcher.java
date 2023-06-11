@@ -81,13 +81,11 @@ public class FileSearcher implements Searcher {
             CsvReader reader = new CsvReader();
             this.result = new ArrayList<>();
             List<String> customers = reader.readFile(filePath + "/customers.csv");
-            System.out.println(filePath + "/customers.csv");
             if (reader.isValidDirectory()) {
                 List<Long> existingCustomerIds = this.existingCustomers(customers);
                 if (existingCustomerIds.size() > 0) {
                     List<String> accounts = reader.readFile(filePath + "/accounts.csv");
                     customerAccountData(accounts);
-
                     int counter = 0;
                     boolean quitFlag = true;
                     while (quitFlag) {
