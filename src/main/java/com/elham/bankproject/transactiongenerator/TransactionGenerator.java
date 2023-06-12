@@ -1,16 +1,23 @@
 package com.elham.bankproject.transactiongenerator;
 
+import com.elham.bankproject.common.ConfigLoader;
+import com.elham.bankproject.common.CsvWriter;
 import com.elham.bankproject.model.Account;
 import com.elham.bankproject.model.Transaction;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class TransactionGenerator {
-    public List<Account> accounts;
+    private final List<Account> accounts;
     public int transactionMinBound;
     public int transactionMaxBound;
+    private final ConfigLoader loadConfig = new ConfigLoader();
+
+    private static final Logger logger = LogManager.getLogger(TransactionGenerator.class);
 
     public TransactionGenerator(List<Account> accounts, int transactionMinBound, int transactionMaxBound) {
         this.accounts = accounts;
@@ -18,13 +25,15 @@ public class TransactionGenerator {
         this.transactionMaxBound = transactionMaxBound;
     }
 
-    public List<List<Transaction>> generateTransaction() {
-        List<List<Transaction>> transactionsListsList = new ArrayList<>();
+    public void generateTransaction() {
         List<Transaction> transactionList = new ArrayList<>();
         Random random = new Random();
         List<Integer> accountIds = AccountGenerator.getAccIds();
         int countTransactions = random.nextInt(transactionMinBound + transactionMaxBound) + transactionMaxBound;
         long transactionId = 0;
+        int count = 0;
+        int transactionWriterLimit = Integer.parseInt(loadConfig.loadConfig
+                ("transactiongenerator.transaction.limit"));
         for (Account account : accounts) {
             for (int i = 0; i < countTransactions; i++) {
                 long now = System.currentTimeMillis();
@@ -45,14 +54,26 @@ public class TransactionGenerator {
                             account.getAccountId(), type.equals("CREDIT") ? "DEBIT" : "CREDIT");
                     transactionList.add(transactionB);
                 }
-                if (transactionList.size() >= 1000) {
-                    List<Transaction> transactions = new ArrayList<>(transactionList);
-                    transactionsListsList.add(transactions);
+                if (transactionList.size() >= transactionWriterLimit) {
+                    this.writeTransactionToFile(transactionList, count);
                     transactionList.clear();
+                    count++;
                 }
             }
         }
-        return transactionsListsList;
+    }
+
+    public void writeTransactionToFile(List<Transaction> transactionList, int count) {
+        String fileLoc = loadConfig.loadConfig("files.destination");
+        long startTransactionGenerateTimeMillis = System.currentTimeMillis();
+        CsvWriter<Transaction> transactionWriter = new CsvWriter<>("transaction" + count + ".csv",
+                fileLoc);
+        transactionWriter.writeToFile("TransactionId,EpochTime,Amount,SourceAcc,DestinationAcc,Type",
+                transactionList);
+        long endTransactionGenerateTimeMillis = System.currentTimeMillis();
+        long timeToGenerateTransaction = endTransactionGenerateTimeMillis - startTransactionGenerateTimeMillis;
+        logger.info("transaction file number " + count + " generated in " + fileLoc + " . took " +
+                timeToGenerateTransaction + " milli seconds.");
     }
 
     public static String getRandomValue() {

@@ -40,20 +40,7 @@ public class DataGenerator {
                     ("transactiongenerator.transaction.max"));
             TransactionGenerator transactionGenerator = new TransactionGenerator(accountList, transactionMinBound,
                     transactionMaxBound);
-            List<List<Transaction>> transactionsList = transactionGenerator.generateTransaction();
-            int count = 0;
-            for (List<Transaction> transactionList : transactionsList) {
-                long startTransactionGenerateTimeMillis = System.currentTimeMillis();
-                CsvWriter<Transaction> transactionWriter = new CsvWriter<>("transaction" + count + ".csv",
-                        fileLoc);
-                transactionWriter.writeToFile("TransactionId,EpochTime,Amount,SourceAcc,DestinationAcc,Type",
-                        transactionList);
-                long endTransactionGenerateTimeMillis = System.currentTimeMillis();
-                long timeToGenerateTransaction = endTransactionGenerateTimeMillis - startTransactionGenerateTimeMillis;
-                logger.info("transaction file number " + count + " generated in " + fileLoc + " . took " +
-                        timeToGenerateTransaction + " milli seconds.");
-                count++;
-            }
+            transactionGenerator.generateTransaction();
         } catch (ArrayIndexOutOfBoundsException e) {
             logger.error("No directory Entered. Please Enter a Directory and the path to config file.");
         } catch (NumberFormatException e) {
