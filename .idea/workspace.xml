@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6d2f6fb7-75a6-4668-8592-4a319b10e892" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/AccountLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/AccountLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/AccountsTableCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/AccountsTableCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/CustomerLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/CustomerLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/CustomerTableCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/CustomerTableCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/DataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/TableCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/TransactionLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/TransactionLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/TransactionTableCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/TransactionTableCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +47,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/elham/workspace/Java_3/Challange/TravelAgency"
+    "last_opened_file_path": "/home/elham/bank-project"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -143,7 +137,9 @@
       <workItem from="1686472009774" duration="3397000" />
       <workItem from="1686480114023" duration="2482000" />
       <workItem from="1686556338953" duration="4124000" />
-      <workItem from="1686577606077" duration="11441000" />
+      <workItem from="1686577606077" duration="12334000" />
+      <workItem from="1686643545061" duration="11000" />
+      <workItem from="1686656529111" duration="1332000" />
     </task>
     <servers />
   </component>
