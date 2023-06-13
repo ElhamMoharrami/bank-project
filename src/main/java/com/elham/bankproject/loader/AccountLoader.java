@@ -28,4 +28,9 @@ public class AccountLoader extends TableLoader {
     public void load() {
         super.executeLoad(list);
     }
+
+    @Override
+    public void run() {
+        this.load();
+    }
 }

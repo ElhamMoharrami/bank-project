@@ -63,7 +63,7 @@ public class DataLoader {
                 List<String> customersList = csvReader.readFile(fileLoc + "/customers.csv");
                 TableLoader tableLoaderC = TableLoader.loadToDb("customers", customersList);
                 tableLoaderC.setSql("customers");
-                Thread loadC = new Thread(() -> tableLoaderC.load());
+                Thread loadC = new Thread(tableLoaderC);
                 loadC.start();
                 long endCustomerLoadTimeMillis = System.currentTimeMillis();
                 long timeToLoadCustomers = endCustomerLoadTimeMillis - startCustomerLoadTimeMillis;
@@ -72,7 +72,7 @@ public class DataLoader {
                 List<String> accountsList = csvReader.readFile(fileLoc + "/accounts.csv");
                 TableLoader tableLoaderA = TableLoader.loadToDb("accounts", accountsList);
                 tableLoaderA.setSql("accounts");
-                Thread loadA = new Thread(() -> tableLoaderA.load());
+                Thread loadA = new Thread(tableLoaderA);
                 loadA.start();
                 long endLoadLoadTimeMillis = System.currentTimeMillis();
                 long timeToLoadAccounts = endLoadLoadTimeMillis - startAccountLoadTimeMillis;
@@ -85,7 +85,7 @@ public class DataLoader {
                         long startTransactionLoadTimeMillis = System.currentTimeMillis();
                         TableLoader tableLoaderT = TableLoader.loadToDb("transactions", transactionList);
                         tableLoaderT.setSql("transactions");
-                        Thread loadT = new Thread(() -> tableLoaderT.load());
+                        Thread loadT = new Thread(tableLoaderT);
                         loadT.start();
                         long endTransactionLoadTimeMillis = System.currentTimeMillis();
                         long timeToLoadTransactions = endTransactionLoadTimeMillis - startTransactionLoadTimeMillis;
