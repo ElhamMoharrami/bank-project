@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6d2f6fb7-75a6-4668-8592-4a319b10e892" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/TableLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/elham/bankproject/loader/TableLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,20 +41,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/elham/bank-project"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/elham/bank-project&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -92,9 +95,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.tr" />
-      <item itemvalue="Application.srch" />
       <item itemvalue="Application.load" />
+      <item itemvalue="Application.srch" />
+      <item itemvalue="Application.tr" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -136,7 +139,10 @@
       <workItem from="1686556338953" duration="4124000" />
       <workItem from="1686577606077" duration="12334000" />
       <workItem from="1686643545061" duration="11000" />
-      <workItem from="1686656529111" duration="2567000" />
+      <workItem from="1686656529111" duration="3481000" />
+      <workItem from="1686734546978" duration="13000" />
+      <workItem from="1686762581909" duration="2601000" />
+      <workItem from="1686815536414" duration="4781000" />
     </task>
     <servers />
   </component>

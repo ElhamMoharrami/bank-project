@@ -24,7 +24,6 @@ public abstract class TableLoader implements Runnable {
             default:
                 logger.warn("entered table name is not allowed");
         }
-
         return null;
     }
 
