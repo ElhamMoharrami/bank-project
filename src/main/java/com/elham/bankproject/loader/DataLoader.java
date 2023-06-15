@@ -68,7 +68,6 @@ public class DataLoader {
             } else if (threadOrSequential > 0) {
                 int numberOfTransactions = numberOfCustomers * maxNumberOfTransactions * maxNumberOfAccounts * numberOfTransactionStatus;
                 int numberOfTasks = (int) Math.ceil(numberOfTransactions / eachCsvFileTransactionLimit);
-                System.out.println(numberOfTasks);
                 ExecutorService executor = Executors.newFixedThreadPool(threadOrSequential);
                 for (int i = 0; i < numberOfTasks; i++) {
                     Runnable task = new Task(i, fileLoc);

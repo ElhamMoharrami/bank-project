@@ -1,8 +1,6 @@
 package com.elham.bankproject.loader;
 
-
 import com.elham.bankproject.model.Account;
-
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -27,10 +25,5 @@ public class AccountLoader extends TableLoader {
 
     public void load() {
         super.executeLoad(list);
-    }
-
-    @Override
-    public void run() {
-        this.load();
     }
 }
