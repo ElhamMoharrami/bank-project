@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class DataLoader {
     private static final Logger logger = LogManager.getLogger(DataLoader.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             ConfigLoader loadConfig = new ConfigLoader();
             String fileLoc = loadConfig.loadConfig("files.destination");
@@ -68,38 +68,32 @@ public class DataLoader {
             } else if (threadOrSequential > 0) {
                 int numberOfTransactions = numberOfCustomers * maxNumberOfTransactions * maxNumberOfAccounts * numberOfTransactionStatus;
                 int numberOfTasks = (int) Math.ceil(numberOfTransactions / eachCsvFileTransactionLimit);
-                ExecutorService executor = Executors.newFixedThreadPool(threadOrSequential);
+
+                //with executer framework
+//            ExecutorService executor = Executors.newFixedThreadPool(threadOrSequential);
+//            for (int i = 0; i < numberOfTasks; i++) {
+//                Runnable task = new Task(i, fileLoc);
+//                executor.execute(task);
+//            }
+//            executor.shutdown();
+//            try {
+//                executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+//            } catch (InterruptedException e) {
+//                logger.error("Thread pool interrupted: " + e.getMessage());
+//            }
+
+                //with my implementation
+                ThreadPool threadPool = new ThreadPool(threadOrSequential, numberOfTasks);
                 for (int i = 0; i < numberOfTasks; i++) {
                     Runnable task = new Task(i, fileLoc);
-                    executor.execute(task);
+                    threadPool.execute(task);
                 }
-                executor.shutdown();
-                try {
-                    executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-                } catch (InterruptedException e) {
-                    System.err.println("Thread pool interrupted: " + e.getMessage());
-                }
+                threadPool.waitUntilAllTasksFinished();
+                threadPool.stop();
             }
+
         } catch (ArrayIndexOutOfBoundsException e) {
             logger.warn("please enter a valid path to config.properties");
-        }
-    }
-
-    private static class Task implements Runnable {
-        private final int trWriteId;
-        private final String fileLoc;
-
-        public Task(int trWriteId, String fileLoc) {
-            this.trWriteId = trWriteId;
-            this.fileLoc = fileLoc;
-        }
-
-        public void run() {
-            CsvReader csvReader = new CsvReader();
-            List<String> transactionList = csvReader.readFile(fileLoc + "/transaction" + trWriteId + ".csv");
-            TableLoader tableLoaderT = TableLoader.loadToDb("transactions", transactionList);
-            tableLoaderT.setSql("transactions");
-            tableLoaderT.load();
         }
     }
 }
