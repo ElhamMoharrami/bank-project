@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class TransactionLoader extends TableLoader {
-
     private final List<String> list;
 
     public TransactionLoader(List<String> list) {

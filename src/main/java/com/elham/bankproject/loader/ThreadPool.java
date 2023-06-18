@@ -1,53 +1,42 @@
 package com.elham.bankproject.loader;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.Queue;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class ThreadPool {
-    private static final Logger logger = LogManager.getLogger(ThreadPool.class);
-    private BlockingQueue<Runnable> taskQueue = null;
-    private final List<WorkerThread> runnables = new ArrayList<>();
-    private boolean isStopped = false;
+    private final Queue<Callable> taskQueue = new LinkedBlockingQueue<>();
+    private final List<WorkerThread> threads = new ArrayList<>();
 
-    public ThreadPool(int noOfThreads, int maxNoOfTasks) {
-        taskQueue = new ArrayBlockingQueue<>(maxNoOfTasks);
-
-        for (int i = 0; i < noOfThreads; i++) {
-            WorkerThread poolThreadRunnable = new WorkerThread(taskQueue);
-            runnables.add(poolThreadRunnable);
-        }
-        for (WorkerThread runnable : runnables) {
-            new Thread(runnable).start();
+    public ThreadPool(int numThreads) {
+        for (int i = 0; i < numThreads; i++) {
+            WorkerThread thread = new WorkerThread(taskQueue);
+            thread.start();
+            threads.add(thread);
         }
     }
 
-    public synchronized void execute(Runnable task) throws Exception {
-        if (this.isStopped) {
-            logger.error("can not execute task, thread pool has been stopped.");
-            throw new IllegalStateException("ThreadPool is stopped");
+    public List<Future<Long>> invokeAll(Collection<? extends Callable> tasks) throws InterruptedException {
+        for (Callable<Long> task : tasks) {
+            taskQueue.offer(task);
         }
-        this.taskQueue.offer(task);
+        List<Future<Long>> results = new ArrayList<>();
+        for (int i = 0; i < tasks.size(); i++) {
+            FutureTask<Long> futureTask = new FutureTask<>(taskQueue.poll());
+            results.add(futureTask);
+            new Thread(futureTask).start();
+        }
+        return results;
     }
 
     public synchronized void stop() {
-        this.isStopped = true;
-        for (WorkerThread runnable : runnables) {
-            runnable.doStop();
-        }
-    }
-
-    public synchronized void waitUntilAllTasksFinished() {
-        while (this.taskQueue.size() > 0) {
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                logger.warn("issue at waiting until all tasks are finished.");
-            }
+        for (WorkerThread thread : threads) {
+            thread.doStop();
         }
     }
 }

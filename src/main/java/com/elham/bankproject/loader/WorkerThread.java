@@ -3,15 +3,16 @@ package com.elham.bankproject.loader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.concurrent.BlockingQueue;
+import java.util.Queue;
+import java.util.concurrent.Callable;
 
 public class WorkerThread extends Thread {
     private static final Logger logger = LogManager.getLogger(WorkerThread.class);
     private Thread thread = null;
-    private BlockingQueue<Runnable> taskQueue = null;
+    private Queue<Callable> taskQueue = null;
     private boolean isStopped = false;
 
-    public WorkerThread(BlockingQueue<Runnable> queue) {
+    public WorkerThread(Queue<Callable> queue) {
         taskQueue = queue;
     }
 
@@ -19,8 +20,10 @@ public class WorkerThread extends Thread {
         this.thread = Thread.currentThread();
         while (!isStopped()) {
             try {
-                Runnable runnable = taskQueue.take();
-                runnable.run();
+                while (taskQueue == null) {
+                    Callable runnable = taskQueue.poll();
+                    runnable.call();
+                }
             } catch (Exception e) {
                 logger.warn("could not run the task. issue at WorkerThread run method.");
             }
