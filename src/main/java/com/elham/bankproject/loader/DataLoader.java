@@ -59,44 +59,56 @@ public class DataLoader {
                 int numberOfTransactions = numberOfCustomers * maxNumberOfTransactions *
                         maxNumberOfAccounts * numberOfTransactionStatus;
                 int numberOfTasks = (int) Math.ceil(numberOfTransactions / eachCsvFileTransactionLimit);
-//                ExecutorService executor = Executors.newFixedThreadPool(threadOrSequential);
-//                List<Callable<Long>> tasks = new ArrayList<>();
-//                for (int i = 0; i < numberOfTasks; i++) {
-//                    Callable<Long> task = new Task(i, fileLoc);
-//                    tasks.add(task);
-//                }
-//                long startTime = System.currentTimeMillis();
-//                List<Future<Long>> futures = executor.invokeAll(tasks);
-//                long endTime = System.currentTimeMillis();
-//                long totalTime = endTime - startTime;
-//                for (int i = 0; i < futures.size(); i++) {
-//                    long taskTime = futures.get(i).get();
-//                    logger.info("Time taken for task " + (i + 1) + ": " + taskTime + " milliseconds");
-//                }
-//                logger.info("Total time taken: " + totalTime + " milliseconds");
-//                executor.shutdown();
+                //threadpool impl
+               // loadOgThreadPool(threadOrSequential, numberOfTransactions, numberOfTasks, fileLoc);
                 //with my implementation
-                ThreadPool threadPool = new ThreadPool(threadOrSequential);
-                List<Callable<Long>> tasks = new ArrayList<>();
-                for (int i = 0; i < numberOfTasks; i++) {
-                    Callable<Long> task = new Task(i, fileLoc);
-                    tasks.add(task);
-                }
-                long startTrLoadTimeMillis = System.currentTimeMillis();
-                List<Future<Long>> futures = threadPool.invokeAll(tasks);
-                long endTime = System.currentTimeMillis();
-                long totalTime = endTime - startTrLoadTimeMillis;
-                for (int i = 0; i < futures.size(); i++) {
-                    long taskTime = futures.get(i).get();
-                    logger.info("Time taken for task " + (i + 1) + ": " + taskTime + " milliseconds");
-                }
-                logger.info("Total time taken: " + totalTime + " milliseconds");
-                threadPool.stop();
+                loadOgThreadPool(threadOrSequential, numberOfTransactions, numberOfTasks, fileLoc);
+
             }
 
         } catch (ArrayIndexOutOfBoundsException e) {
             logger.warn("please enter a valid path to config.properties");
         }
+    }
+
+    public static void loadOgThreadPool(int threadOrSequential, int numberOfTr, int numberOfTasks, String fileLoc)
+            throws InterruptedException, ExecutionException {
+        ExecutorService executor = Executors.newFixedThreadPool(threadOrSequential);
+        List<Callable<Long>> tasks = new ArrayList<>();
+        for (int i = 0; i < numberOfTasks; i++) {
+            Callable<Long> task = new Task(i, fileLoc);
+            tasks.add(task);
+        }
+        long startTime = System.currentTimeMillis();
+        List<Future<Long>> futures = executor.invokeAll(tasks);
+        long endTime = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        for (int i = 0; i < futures.size(); i++) {
+            long taskTime = futures.get(i).get();
+            logger.info("Time taken for task " + (i + 1) + ": " + taskTime + " milliseconds");
+        }
+        logger.info("Total time taken: " + totalTime + " milliseconds");
+        executor.shutdown();
+    }
+
+    public static void loadMyThreadPool(int threadOrSequential, int numberOfTr, int numberOfTasks, String fileLoc)
+            throws InterruptedException, ExecutionException {
+        ThreadPool threadPool = new ThreadPool(threadOrSequential);
+        List<Callable<Long>> tasks = new ArrayList<>();
+        for (int i = 0; i < numberOfTasks; i++) {
+            Callable<Long> task = new Task(i, fileLoc);
+            tasks.add(task);
+        }
+        long startTrLoadTimeMillis = System.currentTimeMillis();
+        List<Future<Long>> futures = threadPool.invokeAll(tasks);
+        long endTime = System.currentTimeMillis();
+        long totalTime = endTime - startTrLoadTimeMillis;
+        for (int i = 0; i < futures.size(); i++) {
+            long taskTime = futures.get(i).get();
+            logger.info("Time taken for task " + (i + 1) + ": " + taskTime + " milliseconds");
+        }
+        logger.info("Total time taken: " + totalTime + " milliseconds");
+        threadPool.stop();
     }
 
     public static void loadSequential(int count, boolean flag, String fileLoc) {

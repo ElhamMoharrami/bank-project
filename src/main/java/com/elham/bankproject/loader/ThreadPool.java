@@ -9,8 +9,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ThreadPool {
-    private final Queue<Callable> taskQueue = new LinkedBlockingQueue<>();
+public class ThreadPool<T> {
+    private final Queue<Callable<T>> taskQueue = new LinkedBlockingQueue<>();
     private final List<WorkerThread> threads = new ArrayList<>();
 
     public ThreadPool(int numThreads) {
@@ -21,13 +21,13 @@ public class ThreadPool {
         }
     }
 
-    public List<Future<Long>> invokeAll(Collection<? extends Callable> tasks) throws InterruptedException {
-        for (Callable<Long> task : tasks) {
+    public List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks) throws InterruptedException {
+        for (Callable<T> task : tasks) {
             taskQueue.offer(task);
         }
-        List<Future<Long>> results = new ArrayList<>();
+        List<Future<T>> results = new ArrayList<>();
         for (int i = 0; i < tasks.size(); i++) {
-            FutureTask<Long> futureTask = new FutureTask<>(taskQueue.poll());
+            FutureTask<T> futureTask = new FutureTask<>(taskQueue.poll());
             results.add(futureTask);
             new Thread(futureTask).start();
         }
